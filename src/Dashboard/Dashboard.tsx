@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Tag, Divider, Icon, Button } from 'antd';
 import { Table } from 'antd';
-// import AddLicense from './AddLicense';
 
 
 
