@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import DashboardLayout from './Dashboard/Dashboard';
+import BookingRooms from './Components/Main/BookingRooms';
 
 class App extends Component {
-  render() {
+  public render() {
     return (
       <div className="App">
-        <DashboardLayout />
+     <BookingRooms />
       </div>
     );
   }
