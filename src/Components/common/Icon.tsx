@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-
-class Icon extends Component
-{
-    constructor(props:any)
-    {
-        super(props)
-    }
-
-    public render()
-    {
-        return(
-            <div>HAI</div>
-        );
-    }
+interface IProps {
+  name: string;
+  size: number;
 }
+class Icon extends Component<any, IProps> {
+  constructor(props: IProps) {
+    super(props);
+  }
 
+  public render() {
+    const { name, size } = this.props;
+
+    return (
+      <span>
+        <i className={name} style={{ fontSize: size || 20 }} />
+      </span>
+    );
+  }
+}
 
 export default Icon;
