@@ -25,6 +25,36 @@ class BookingRooms extends Component<any, IState> {
     ];
     this.setState({ totalContent });
   }
+
+  public decrementButton = (name: string, counts: number) => {
+    const { totalContent } = this.state;
+    const temp = totalContent.filter((item: any, index) => item.name === name);
+    const count = temp[0].count;
+    switch (name) {
+      case "ROOMS":
+        this.decrementRoom(count);
+        break;
+      case "ADULTS":
+        this.decrementAdults(count);
+        break;
+      case "CHILDREN":
+        this.decrementChildren(count);
+        break;
+    }
+  };
+  public incrementButton = (name: string, count: number) => {
+    switch (name) {
+      case "ROOMS":
+        this.incrementRoom(count);
+        break;
+      case "ADULTS":
+        this.incrementAdults(count);
+        break;
+      case "CHILDREN":
+        this.incrementChildren(count);
+        break;
+    }
+  };
   public render() {
     const { totalContent } = this.state;
 
@@ -34,6 +64,16 @@ class BookingRooms extends Component<any, IState> {
           contentIcon={item.iconName}
           contentName={item.name}
           count={item.count}
+          decrementButton={this.decrementButton.bind(
+            this,
+            item.name,
+            item.count
+          )}
+          incrementButton={this.incrementButton.bind(
+            this,
+            item.name,
+            item.count
+          )}
         />
       </span>
     ));
@@ -52,6 +92,28 @@ class BookingRooms extends Component<any, IState> {
       </div>
     );
   }
+
+  private decrementRoom = (count: number) => {
+    const { totalContent } = this.state;
+    // this.setState(totalContent: totalContent[0].count)
+    alert("- room");
+  };
+  private decrementAdults = (count: number) => {
+    alert("-Adults");
+  };
+  private decrementChildren = (count: number) => {
+    alert("-Child");
+  };
+
+  private incrementRoom = (count: number) => {
+    alert("+ room");
+  };
+  private incrementAdults = (count: number) => {
+    alert("+ Adults");
+  };
+  private incrementChildren = (count: number) => {
+    alert("+ Child");
+  };
 }
 
 export default BookingRooms;
