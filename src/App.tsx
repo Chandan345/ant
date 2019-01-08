@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import BookingRooms from './BookingRooms/BookingRooms';
+import BookingRooms from './Components/Main/BookingRooms';
 
 class App extends Component {
-  render() {
+  public render() {
     return (
       <div className="App">
      <BookingRooms />

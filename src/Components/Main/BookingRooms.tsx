@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import Icon from '../common/Icon';
 
 
 
 class BookingRooms extends Component {
-    render() {
+    public render() {
       return (
         <div>
-        hii
+          <Icon />
         </div>
       );
     }
