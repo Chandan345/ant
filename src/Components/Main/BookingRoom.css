@@ -1,0 +1,34 @@
+.text {
+  text-align: left;
+}
+.count {
+  float: right;
+}
+.booking-content {
+  border: 1px solid #293189;
+}
+.count-number {
+  padding: 0px 10px;
+  font-size: 20px;
+}
+.icon-head {
+  font-size: 24px;
+  color: #293189;
+}
+.icon-content {
+  padding: 20px;
+  color: #293189;
+}
+.count {
+  padding: 20px;
+}
+.header-text {
+  color: #293189;
+  font-size: 18px;
+}
+.content-text {
+  color: #293189;
+}
+.people-text {
+  font-weight: bold;
+}

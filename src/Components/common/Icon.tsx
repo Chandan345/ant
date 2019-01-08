@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 interface IProps {
   name: string;
-  size: number;
+  styles: any;
 }
 class Icon extends Component<any, IProps> {
   constructor(props: IProps) {
@@ -10,11 +10,11 @@ class Icon extends Component<any, IProps> {
   }
 
   public render() {
-    const { name, size } = this.props;
+    const { name, styles } = this.props;
 
     return (
       <span>
-        <i className={name} style={{ fontSize: size || 20 }} />
+        <i className={name} style={styles} />
       </span>
     );
   }

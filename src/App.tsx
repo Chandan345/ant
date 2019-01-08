@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import BookingRooms from './Components/Main/BookingRooms';
+import React, { Component } from "react";
+import "./App.css";
+import BookingRooms from "./Components/Main/BookingRooms";
 
 class App extends Component {
   public render() {
     return (
       <div className="App">
-     <BookingRooms />
+        <BookingRooms />
       </div>
     );
   }
