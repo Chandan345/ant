@@ -1,28 +1,7 @@
 import React, { Component } from "react";
 import Icon from "../common/Icon";
-interface IProps {
-  contentIcon: string;
-  contentName: string;
-  roomCount: number;
-  childCount: number;
-  adultCount: number;
-  decrementButton: (
-    name: string,
-    roomCount: number,
-    adultCount: number,
-    childCount: number
-  ) => void;
-  incrementButton: (
-    name: string,
-    roomCount: number,
-    adultCount: number,
-    childCount: number
-  ) => void;
-}
-class RoomAdultsChild extends Component<IProps> {
-  constructor(props: IProps) {
-    super(props);
-  }
+import { IPropsRoomsAdultsChild } from "../common/interface";
+class RoomAdultsChild extends Component<IPropsRoomsAdultsChild> {
   public render() {
     const {
       contentIcon,

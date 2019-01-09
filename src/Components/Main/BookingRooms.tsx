@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import Icon from "../common/Icon";
-import "./BookingRoom.css";
+import { IStateBookingRoom } from "../common/interface";
+import "../css/BookingRoom.css";
 import RoomAdultsChild from "./RoomAdultsChild";
-interface IBook {
-  name: string;
-  iconName: string;
-}
-interface IState {
-  totalContent: IBook[];
-  room: number;
-  adult: number;
-  child: number;
-}
-class BookingRooms extends Component<any, IState> {
+
+class BookingRooms extends Component<any, IStateBookingRoom> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -31,43 +23,6 @@ class BookingRooms extends Component<any, IState> {
     this.setState({ totalContent });
   }
 
-  public decrementButton = (
-    name: string,
-    room: number,
-    adult: number,
-    child: number
-  ) => {
-    const { totalContent } = this.state;
-    switch (name) {
-      case "ROOMS":
-        this.decrementRoom(room, adult, child);
-        break;
-      case "ADULTS":
-        this.decrementAdults(room, adult, child);
-        break;
-      case "CHILDREN":
-        this.decrementChildren(room, adult, child);
-        break;
-    }
-  };
-  public incrementButton = (
-    name: string,
-    room: number,
-    adult: number,
-    child: number
-  ) => {
-    switch (name) {
-      case "ROOMS":
-        this.incrementRoom(room, adult, child);
-        break;
-      case "ADULTS":
-        this.incrementAdults(room, adult, child);
-        break;
-      case "CHILDREN":
-        this.incrementChildren(room, adult, child);
-        break;
-    }
-  };
   public render() {
     const { totalContent, room, adult, child } = this.state;
 
@@ -111,46 +66,45 @@ class BookingRooms extends Component<any, IState> {
       </div>
     );
   }
-  // =========================================== DECREMENT ==========================================================//
-  private decrementRoom = (rooms: number, adults: number, children: number) => {
-    const { totalContent, room, adult, child } = this.state;
-    this.setState({ room: --rooms });
-  };
-  private decrementAdults = (
+  // =========================================== INCREMENT ================================================= //
+  private incrementButton = (
+    name: string,
     rooms: number,
     adults: number,
     children: number
   ) => {
-    const { totalContent, room, child, adult } = this.state;
-    this.setState({ adult: --adults });
-  };
-  private decrementChildren = (
-    rooms: number,
-    adults: number,
-    children: number
-  ) => {
-    const { totalContent, room, child } = this.state;
-    this.setState({ child: --children });
-  };
-  // =========================================== INCREMENT ==========================================================//
+    switch (name) {
+      case "ROOMS":
+        this.setState({ room: ++rooms });
+        break;
+      case "ADULTS":
+        this.setState({ adult: ++adults });
+        break;
+      case "CHILDREN":
+        this.setState({ child: ++children });
 
-  private incrementRoom = (rooms: number, adults: number, children: number) => {
-    this.setState({ room: ++rooms });
+        break;
+    }
   };
-  private incrementAdults = (
+  // =========================================== DECREMENT ================================================= //
+
+  private decrementButton = (
+    name: string,
     rooms: number,
     adults: number,
     children: number
   ) => {
-    this.setState({ adult: ++adults });
-  };
-  private incrementChildren = (
-    rooms: number,
-    adults: number,
-    children: number
-  ) => {
-    this.setState({ child: ++children });
+    switch (name) {
+      case "ROOMS":
+        this.setState({ room: --rooms });
+        break;
+      case "ADULTS":
+        this.setState({ adult: --adults });
+        break;
+      case "CHILDREN":
+        this.setState({ child: --children });
+        break;
+    }
   };
 }
-
 export default BookingRooms;
