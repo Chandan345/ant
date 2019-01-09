@@ -17,6 +17,22 @@ class RoomAdultsChild extends Component<IPropsRoomsAdultsChild> {
       (contentName === "ADULTS" && adultCount) ||
       (contentName === "ROOMS" && roomCount) ||
       0;
+    const decrementMethod =
+      count >= 1 &&
+      decrementButton.bind(
+        this,
+        contentName,
+        roomCount,
+        adultCount,
+        childCount
+      );
+    const incrementMethod = incrementButton.bind(
+      this,
+      contentName,
+      roomCount,
+      adultCount,
+      childCount
+    );
     return (
       <div>
         <span className={"text"}>
@@ -25,24 +41,12 @@ class RoomAdultsChild extends Component<IPropsRoomsAdultsChild> {
           <span className="count">
             <Icon
               name={`fas fa-minus-circle minus-icon`}
-              onClick={decrementButton.bind(
-                this,
-                contentName,
-                roomCount,
-                adultCount,
-                childCount
-              )}
+              onClick={decrementMethod}
             />
             <span className="count-number">{count}</span>
             <Icon
               name={`fas fa-plus-circle plus-icon`}
-              onClick={incrementButton.bind(
-                this,
-                contentName,
-                roomCount,
-                adultCount,
-                childCount
-              )}
+              onClick={incrementMethod}
             />
           </span>
         </span>
