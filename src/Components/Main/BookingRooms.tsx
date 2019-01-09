@@ -8,9 +8,9 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
   constructor(props: any) {
     super(props);
     this.state = {
-      adult: 0,
-      child: 0,
-      room: 0,
+      adult: 1,
+      child: 1,
+      room: 1,
       totalContent: []
     };
   }
