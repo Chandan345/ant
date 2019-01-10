@@ -9,7 +9,7 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
     super(props);
     this.state = {
       adult: 1,
-      child: 1,
+      child: 0,
       room: 1,
       totalContent: []
     };
@@ -73,15 +73,20 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
     adults: number,
     children: number
   ) => {
+    const {adult,room,child} = this.state;
     switch (name) {
       case "ROOMS":
-        this.setState({ room: ++rooms });
+      if(room < 5){
+        this.setState({ room: rooms+1, adult: adults > rooms ? adults: rooms + 1});
+      }
         break;
       case "ADULTS":
-        this.setState({ adult: ++adults });
+      if(adult < 20){
+        this.setState({ adult: adults+1 });
+      }
         break;
       case "CHILDREN":
-        this.setState({ child: ++children });
+        this.setState({ child: children+1 });
 
         break;
     }
@@ -96,13 +101,22 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
   ) => {
     switch (name) {
       case "ROOMS":
-        this.setState({ room: --rooms });
+      if(rooms>1)
+      {
+        this.setState({ room: rooms-1,adult:(rooms-1)*4>adults?adults:(rooms-1)*4 });
+      }
         break;
       case "ADULTS":
-        this.setState({ adult: --adults });
+      if(adults>1)
+      {
+        this.setState({ adult: adults-1 });
+      }
         break;
       case "CHILDREN":
-        this.setState({ child: --children });
+      if(children>0)
+      {
+        this.setState({ child: children-1 });
+      }
         break;
     }
   };
