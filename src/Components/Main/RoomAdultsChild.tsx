@@ -18,7 +18,6 @@ class RoomAdultsChild extends Component<IPropsRoomsAdultsChild> {
       (contentName === "ROOMS" && roomCount) ||
       0;
     const decrementMethod =
-      count >= 1 &&
       decrementButton.bind(
         this,
         contentName,
