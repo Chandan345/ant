@@ -73,20 +73,30 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
     adults: number,
     children: number
   ) => {
-    const {adult,room,child} = this.state;
+    const { adult, room, child } = this.state;
     switch (name) {
       case "ROOMS":
-      if(room < 5){
-        this.setState({ room: rooms+1, adult: adults > rooms ? adults: rooms + 1});
-      }
+        if (room < 5) {
+          const temp = (adults > rooms && adults) || rooms + 1;
+          this.setState({
+            adult: temp,
+            room: rooms + 1
+          });
+        }
         break;
       case "ADULTS":
-      if(adult < 20){
-        this.setState({ adult: adults+1 });
-      }
+        if (adult < 20) {
+          const temp =
+            (children > 0 && adults + children === rooms * 4 && children - 1) ||
+            children;
+          this.setState({
+            adult: adults + 1,
+            child: temp
+          });
+        }
         break;
       case "CHILDREN":
-        this.setState({ child: children+1 });
+        this.setState({ child: children + 1 });
 
         break;
     }
@@ -101,22 +111,23 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
   ) => {
     switch (name) {
       case "ROOMS":
-      if(rooms>1)
-      {
-        this.setState({ room: rooms-1,adult:(rooms-1)*4>adults?adults:(rooms-1)*4 });
-      }
+        if (rooms > 1) {
+          const temp = ((rooms - 1) * 4 > adults && adults) || (rooms - 1) * 4;
+          this.setState({
+            adult: temp,
+            room: rooms - 1
+          });
+        }
         break;
       case "ADULTS":
-      if(adults>1)
-      {
-        this.setState({ adult: adults-1 });
-      }
+        if (adults > 1) {
+          this.setState({ adult: adults - 1 });
+        }
         break;
       case "CHILDREN":
-      if(children>0)
-      {
-        this.setState({ child: children-1 });
-      }
+        if (children > 0) {
+          this.setState({ child: children - 1 });
+        }
         break;
     }
   };
