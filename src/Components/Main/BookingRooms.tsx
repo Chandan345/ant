@@ -73,27 +73,23 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
     adults: number,
     children: number
   ) => {
-    const { adult, room, child } = this.state;
     switch (name) {
       case "ROOMS":
-        if (room < 5) {
-          const temp = (adults > rooms && adults) || rooms + 1;
-          this.setState({
-            adult: temp,
-            room: rooms + 1
-          });
-        }
+        const temp1 = (adults > rooms && adults) || rooms + 1;
+        this.setState({
+          adult: temp1,
+          room: rooms + 1
+        });
         break;
       case "ADULTS":
-        if (adult < 20) {
-          const temp =
-            (children > 0 && adults + children === rooms * 4 && children - 1) ||
-            children;
-          this.setState({
-            adult: adults + 1,
-            child: temp
-          });
-        }
+        const temp2 =
+          (children > 0 && adults + children === rooms * 4 && children - 1) ||
+          children;
+        this.setState({
+          adult: adults + 1,
+          child: temp2,
+          room: (rooms * 4 === adults && rooms + 1) || rooms
+        });
         break;
       case "CHILDREN":
         this.setState({ child: children + 1 });
@@ -111,23 +107,21 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
   ) => {
     switch (name) {
       case "ROOMS":
-        if (rooms > 1) {
-          const temp = ((rooms - 1) * 4 > adults && adults) || (rooms - 1) * 4;
-          this.setState({
-            adult: temp,
-            room: rooms - 1
-          });
-        }
+        const temp = ((rooms - 1) * 4 > adults && adults) || (rooms - 1) * 4;
+        this.setState({
+          adult: temp,
+          child: 0,
+          room: rooms - 1
+        });
         break;
       case "ADULTS":
-        if (adults > 1) {
-          this.setState({ adult: adults - 1 });
-        }
+        this.setState({
+          adult: adults - 1,
+          room: (rooms * 4 === adults && rooms - 1) || rooms
+        });
         break;
       case "CHILDREN":
-        if (children > 0) {
-          this.setState({ child: children - 1 });
-        }
+        this.setState({ child: children - 1 });
         break;
     }
   };
