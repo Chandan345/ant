@@ -83,7 +83,7 @@ class BookingRooms extends Component<any, IStateBookingRoom> {
         break;
       case "ADULTS":
         const temp2 =
-          (children > 0 && ( adults + children === rooms * 4) && (children - 1)) || children
+          children > 0 ?  (adults + children === rooms * 4) ? (children - 1) : children : 0
         this.setState({
           adult: adults + 1,
           child: temp2,
