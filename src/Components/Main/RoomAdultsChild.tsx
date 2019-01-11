@@ -34,7 +34,7 @@ class RoomAdultsChild extends Component<IPropsRoomsAdultsChild> {
     const disableMinusButton =
       (contentName === "ROOMS" && (roomCount === 1 && "disabled")) ||
       (contentName === "CHILDREN" && (childCount === 0 && "disabled")) ||
-      (contentName === "ADULTS" && (adultCount === 0 && "disabled")) ||
+      (contentName === "ADULTS" && ((adultCount === 1 || adultCount === roomCount )&& "disabled")) ||
       null;
     const disablePlusButton =
       (contentName === "ROOMS" && (roomCount === 5 && "disabled")) ||
